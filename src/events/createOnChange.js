@@ -1,5 +1,10 @@
 import getValue from './getValue';
 const createOnChange =
   (name, change, isReactNative) =>
-    event => change(name, getValue(event, isReactNative));
+    (event, callback) => {
+      change(name, getValue(event, isReactNative));
+      if (typeof callback === 'function') {
+        callback();
+      }
+    };
 export default createOnChange;

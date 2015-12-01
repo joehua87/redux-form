@@ -16,4 +16,11 @@ describe('createOnChange', () => {
       .toHaveBeenCalledWith('foo', 'bar');
   });
 
+  it('should call a callback function', () => {
+    const change = createSpy();
+    const callback = createSpy();
+    createOnChange('foo', change)('bar', callback);
+    expect(callback)
+      .toHaveBeenCalled();
+  });
 });
